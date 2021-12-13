@@ -1,5 +1,7 @@
 package Login.Page;
 
+
+import SelectOption.Options;
 import MainProcess.LoginService;
 import javax.swing.JOptionPane;
 
@@ -52,11 +54,11 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(90, 260, 130, 50);
 
-        passwordlogo.setIcon(new javax.swing.ImageIcon("D:\\Mini Project\\Images\\icons8-password-16.png")); // NOI18N
+        passwordlogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-password-16.png"))); // NOI18N
         getContentPane().add(passwordlogo);
         passwordlogo.setBounds(220, 340, 50, 50);
 
-        useridlogo.setIcon(new javax.swing.ImageIcon("D:\\Mini Project\\Images\\icons8-collaborator-male-16.png")); // NOI18N
+        useridlogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-collaborator-male-16.png"))); // NOI18N
         getContentPane().add(useridlogo);
         useridlogo.setBounds(220, 260, 50, 50);
 
@@ -106,7 +108,7 @@ public class Login extends javax.swing.JFrame {
         password.setBounds(250, 340, 150, 50);
 
         mainlogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mainlogo.setIcon(new javax.swing.ImageIcon("D:\\Mini Project\\Images\\Logo.jpg")); // NOI18N
+        mainlogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.jpg"))); // NOI18N
         getContentPane().add(mainlogo);
         mainlogo.setBounds(80, 110, 360, 90);
 
@@ -116,17 +118,17 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(mainheading);
         mainheading.setBounds(80, 60, 360, 50);
 
-        rightimage.setIcon(new javax.swing.ImageIcon("D:\\Mini Project\\Images\\Login Page Side .png")); // NOI18N
+        rightimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login Page Side .png"))); // NOI18N
         rightimage.setText("jLabel3");
         getContentPane().add(rightimage);
         rightimage.setBounds(440, 50, 490, 480);
 
-        mainpanel.setIcon(new javax.swing.ImageIcon("D:\\Mini Project\\Images\\white.jpg")); // NOI18N
+        mainpanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/white.jpg"))); // NOI18N
         mainpanel.setText("jLabel2");
         getContentPane().add(mainpanel);
         mainpanel.setBounds(80, 50, 850, 480);
 
-        background.setIcon(new javax.swing.ImageIcon("D:\\Mini Project\\Images\\yellow.jpg")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/yellow.jpg"))); // NOI18N
         background.setText("jLabel1");
         getContentPane().add(background);
         background.setBounds(0, 0, 1000, 580);
@@ -136,12 +138,15 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonActionPerformed
+        Options op=new Options();
         int user = Integer.parseInt(userid.getText());
         int pass = Integer.parseInt(password.getText());
         LoginService ls = new LoginService();
         if (ls.login(user, pass) == 1)
         {
             JOptionPane.showMessageDialog(null, "LOGIN SUCCESSFUL");
+            op.setVisible(true);
+            this.dispose();
         } 
         else
             JOptionPane.showMessageDialog(null, "LOGIN FAILED");
